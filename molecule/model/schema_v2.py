@@ -644,6 +644,9 @@ platforms_docker_schema = {
                         },
                     }
                 },
+                'user': {
+                    'type': 'string',
+                },
                 'override_command': {
                     'type': 'boolean',
                     'nullable': True,

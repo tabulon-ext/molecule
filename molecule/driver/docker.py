@@ -56,6 +56,7 @@ class Docker(base.Base):
                 username: $USERNAME
                 password: $PASSWORD
                 email: user@example.com
+                user: root
             override_command: True|False
             command: sleep infinity
             pid_mode: host
