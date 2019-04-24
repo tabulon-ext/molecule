@@ -72,6 +72,7 @@ def skip_test(request, driver_name):
         'docker': supports_docker,
         'ec2': supports_ec2,
         'gce': supports_gce,
+        'hetznercloud': supports_hetznercloud,
         'linode': supports_linode,
         'lxc': supports_lxc,
         'lxd': supports_lxd,
@@ -385,6 +386,15 @@ def supports_gce():
     )
 
     return _env_vars_exposed(env_vars) and HAS_GOOGLE_AUTH
+
+
+@pytest.helpers.register
+def supports_hetznercloud():
+    pytest.importorskip('hcloud')  # Ansible provides no import
+
+    env_vars = ('HCLOUD_TOKEN', )
+
+    return _env_vars_exposed(env_vars)
 
 
 @pytest.helpers.register
