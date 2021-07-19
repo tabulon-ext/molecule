@@ -282,8 +282,8 @@ class Config(object, metaclass=NewInitCaller):
         environment variables.
 
         1. Loads Molecule defaults.
-        2. Loads a base config (if provided) and merges ontop of defaults.
-        3. Loads the scenario's ``molecule file`` and merges ontop of previous
+        2. Loads a base config (if provided) and merges on top of defaults.
+        3. Loads the scenario's ``molecule file`` and merges on top of previous
            merge.
 
         :return: dict
@@ -433,12 +433,12 @@ class Config(object, metaclass=NewInitCaller):
             util.sysexit_with_message(msg)
 
 
-def molecule_directory(path):
+def molecule_directory(path: str) -> str:
     """Return directory of the current scenario."""
     return os.path.join(path, MOLECULE_DIRECTORY)
 
 
-def molecule_file(path):
+def molecule_file(path: str) -> str:
     """Return file path of current scenario."""
     return os.path.join(path, MOLECULE_FILE)
 

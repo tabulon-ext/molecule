@@ -44,11 +44,13 @@ class AnsibleGalaxyBase(base.Base):
 
         self.command = "ansible-galaxy"
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def install_path(self):  # noqa cover
         pass
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def requirements_file(self):  # noqa cover
         pass
 
@@ -111,6 +113,7 @@ class AnsibleGalaxyBase(base.Base):
         )
 
     def execute(self):
+        super().execute()
         if not self.enabled:
             msg = "Skipping, dependency is disabled."
             LOG.warning(msg)

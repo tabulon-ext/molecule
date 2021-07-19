@@ -25,6 +25,8 @@ import os
 import time
 from subprocess import CalledProcessError
 
+from ansiblelint.prerun import require_collection
+
 from molecule import util
 
 LOG = logging.getLogger(__name__)
@@ -88,8 +90,11 @@ class Base(object):
 
         :return: None
         """
+        for name, version in self._config.driver.required_collections.items():
+            require_collection(name, version)
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def default_options(self):  # pragma: no cover
         """
         Get default CLI arguments provided to ``cmd`` as a dict.
